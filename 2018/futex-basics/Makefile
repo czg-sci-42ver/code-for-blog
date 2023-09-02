@@ -15,7 +15,8 @@ EXECUTABLES = \
 	futex-basic-process \
 	futex-basic-thread \
 	futex-wait-timeout \
-	mutex-using-futex
+	mutex-using-futex \
+	mutex-using-futex_deadlock
 
 all: $(EXECUTABLES)
 
@@ -30,6 +31,9 @@ futex-wait-timeout: futex-wait-timeout.c
 
 mutex-using-futex: mutex-using-futex.cpp
 	$(CXX) $(CXXFLAGS) $^ -o $@ $(LDFLAGS)
+
+mutex-using-futex_deadlock: mutex-using-futex_deadlock.cpp
+	$(CXX) $(CXXFLAGS) $^ -o $@ $(LDFLAGS) -DUSE_DESIRE_ONE
 
 .PHONY: clean format
 
